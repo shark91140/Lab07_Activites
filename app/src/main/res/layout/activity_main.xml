@@ -35,6 +35,13 @@
         android:layout_centerHorizontal="true"
         android:onClick="selectColor"/>
     <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="輸入文字"
+        android:layout_below="@+id/btn_text"
+        android:layout_centerHorizontal="true"
+        android:onClick="putText"/>
+    <Button
         android:id="@+id/btn_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,11 +49,5 @@
         android:layout_below="@+id/btn_selectColor"
         android:layout_centerHorizontal="true"
         android:onClick="textClick"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="輸入文字"
-        android:layout_below="@+id/btn_text"
-        android:layout_centerHorizontal="true"
-        android:onClick="putText"/>
+
 </RelativeLayout>

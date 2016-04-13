@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">Lab07_Activites</string>
+
+    <string name="name_1">1</string>
+    <string name="question_1">  "1" + 1 結果為何?</string>
+    <string name="answer1_1">2</string>
+    <string name="answer1_2">執行中失敗</string>
+    <string name="answer1_3">編譯失敗</string>
+
+    <string name="name_2">2</string>
+    <string name="question_2">題目2</string>
+    <string name="answer2_1">答案2_1</string>
+    <string name="answer2_2">答案2_2</string>
+    <string name="answer2_3">答案2_3</string>
+
+    <string name="name_3">3</string>
+    <string name="question_3">題目3</string>
+    <string name="answer3_1">答案3_1</string>
+    <string name="answer3_2">答案3_2</string>
+    <string name="answer3_3">答案3_3</string>
+
+
 </resources>

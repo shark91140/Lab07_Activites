@@ -10,6 +10,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int SELECT_COLOR_REQUEST = 0;
     private static final int text_Click = 1;
     private static final int text_Input = 2;
+    private int m_color;
+    private CharSequence m_edit_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,20 +29,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == SELECT_COLOR_REQUEST) {
+            if (resultCode == RESULT_OK) {
 
                 Bundle bundle = data.getExtras();
-                int colorInt = bundle.getInt(ColorPickerActivity.BUNDLE_KEY_COLOR_INT);
+                m_color = bundle.getInt(ColorPickerActivity.BUNDLE_KEY_COLOR_INT);
                 CharSequence colorName = bundle.getCharSequence(ColorPickerActivity.BUNDLE_KEY_COLOR_NAME);
                 TextView tv_color = (TextView) findViewById(R.id.tv_color);
                 tv_color.setText(colorName);
-                tv_color.setBackgroundColor(colorInt);
+                tv_color.setBackgroundColor(m_color);
+            }
         } else if (requestCode == text_Input) {
-            Bundle bundle = data.getExtras();
-            CharSequence edit_text = bundle.getCharSequence(edit_Text_Activity.BUNDLE_KEY_TEXT);
-            TextView tv_color = (TextView) findViewById(R.id.tv_color);
-            tv_color.setText(edit_text);
+            if (resultCode == RESULT_OK) {
+                Bundle bundle = data.getExtras();
+                m_edit_text = bundle.getCharSequence(edit_Text_Activity.BUNDLE_KEY_TEXT);
+                TextView tv_color = (TextView) findViewById(R.id.tv_color);
+                tv_color.setText(m_edit_text);
+            }
         } else if (requestCode == text_Click) {
+            if (resultCode == RESULT_OK) {
 
+            }
         }
 
 
@@ -48,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void textClick(View view) {
         Intent intent = new Intent(this, one_Activity.class);
+        intent.putExtra(ColorPickerActivity.BUNDLE_KEY_COLOR_INT,m_color);
+        intent.putExtra(edit_Text_Activity.BUNDLE_KEY_TEXT,m_edit_text);
         startActivityForResult(intent, text_Click);
     }
 
