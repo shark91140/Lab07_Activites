@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IntDef;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -19,7 +20,9 @@ public abstract class QuestionActivity extends AppCompatActivity {
     private Button m_btn_back;
     private Button m_btn_next;
     private static int sQuestionIndex = 0;
+    private static int sLastQuestionIndex;
     private static QuestionAdapter sAdapter;
+
 
     @Override
     public void onBackPressed() {
@@ -62,17 +65,39 @@ public abstract class QuestionActivity extends AppCompatActivity {
     }
 
     public void Back(View view) {
+        sLastQuestionIndex = sQuestionIndex;
         sQuestionIndex--;
         Intent intent = new Intent(this, getBackActivityClass());
+        intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
         startActivity(intent);
     }
 
 
     public void Next(View view) {
+        sLastQuestionIndex = sQuestionIndex;
         sQuestionIndex++;
         Intent intent = new Intent(this, getNextActivityClass());
+        intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
         startActivity(intent);
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(this.toString(),"onPause,index="+sQuestionIndex);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(this.toString(), "onPause,index=" + sQuestionIndex);
+        if(sQuestionIndex < sLastQuestionIndex){
+            overridePendingTransition(R.anim.push_left_in,R.anim.push_right_out);
+        }else if(sQuestionIndex > sLastQuestionIndex){
+            overridePendingTransition(R.anim.push_right_in,R.anim.push_left_out);
+        }
+    }
+
     public void  setBackButtonText(CharSequence text){
         m_btn_back.setText(text);
     }
