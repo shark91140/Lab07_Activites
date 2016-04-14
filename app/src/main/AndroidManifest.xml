@@ -20,7 +20,7 @@
         <activity android:name=".two_Activity" />
         <activity android:name=".one_Activity" />
         <activity android:name=".three_Activity" />
-        <activity android:name=".edit_Text_Activity"></activity>
+        <activity android:name=".edit_Text_Activity" />
     </application>
 
 </manifest>

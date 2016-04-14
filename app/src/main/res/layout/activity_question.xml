@@ -8,26 +8,28 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.example.studente3.lab07_activites.three_Activity">
+    tools:context="com.example.studente3.lab07_activites.two_Activity">
 
-    <include android:id="@+id/question_answer_3"
+    <include android:id="@+id/question_answer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         layout="@layout/question_answer"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="back"
-        android:onClick="threeBack"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MAIN"
-
-        android:onClick="threeNext"/>
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="back"
+            android:onClick="Back"/>
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="next"
+            android:onClick="Next"/>
     </LinearLayout>
+
 </LinearLayout>
