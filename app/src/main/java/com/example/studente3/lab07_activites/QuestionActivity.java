@@ -66,7 +66,7 @@ public abstract class QuestionActivity extends AppCompatActivity {
         m_radio_b.setText(sAdapter.getQuestionOptionB(sQuestionIndex));
         m_radio_c.setText(sAdapter.getQuestionOptionC(sQuestionIndex));
         m_tv_name.setText(no);
-        m_tv_message.setText(sAdapter.getQuestion(sQuestionIndex));
+        m_tv_message.setText(sAdapter.getQuestion(sQuestionIndex).toString());
     }
 
     public void Back(View view) {

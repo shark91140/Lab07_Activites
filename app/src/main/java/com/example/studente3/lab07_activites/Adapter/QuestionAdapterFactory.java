@@ -1,6 +1,7 @@
 package com.example.studente3.lab07_activites.Adapter;
 
 import android.content.res.Resources;
+import android.util.Log;
 
 import com.example.studente3.lab07_activites.MyApp.MyApp;
 
@@ -13,7 +14,13 @@ public class QuestionAdapterFactory {
     public static QuestionAdapter getQuestionAdapter() {
         if (adapter == null) {
             Resources res = MyApp.getContext().getResources();
-            adapter = new QuestionFromString(res);
+            //adapter = new QuestionFromString(res);
+            try {
+                adapter = new QuestionFromXml(res);
+            }catch (Exception e){
+                Log.d("factory",e.toString());
+            }
+
         }
         return adapter;
     }

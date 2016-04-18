@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Exams>
+    <Exam>
+        <Question>raw  "1" + 1 結果為何?</Question>
+        <OptionA>2</OptionA>
+        <OptionB>執行中失敗</OptionB>
+        <OptionC>編譯失敗</OptionC>
+    </Exam>
+    <Exam>
+        <Question>題目2</Question>
+        <OptionA>答案2_1</OptionA>
+        <OptionB>答案2_2</OptionB>
+        <OptionC>答案2_3</OptionC>
+    </Exam>
+    <Exam>
+        <Question>題目3</Question>
+        <OptionA>答案3_1</OptionA>
+        <OptionB>答案3_2</OptionB>
+        <OptionC>答案3_3</OptionC>
+    </Exam>
+
+</Exams>
