@@ -13,7 +13,7 @@
     <include android:id="@+id/question_answer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        layout="@layout/question_answer"/>
+        layout="@layout/question_answer" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

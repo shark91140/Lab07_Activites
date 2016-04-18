@@ -10,6 +10,11 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.example.studente3.lab07_activites.Adapter.QuestionAdapter;
+import com.example.studente3.lab07_activites.Adapter.QuestionAdapterFactory;
+import com.example.studente3.lab07_activites.MyApp.MyApp;
+import com.example.studente3.lab07_activites.model.UserAnswer;
+
 public abstract class QuestionActivity extends AppCompatActivity {
 
     private TextView m_tv_message;
@@ -68,7 +73,7 @@ public abstract class QuestionActivity extends AppCompatActivity {
         sLastQuestionIndex = sQuestionIndex;
         sQuestionIndex--;
         Intent intent = new Intent(this, getBackActivityClass());
-        intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intent);
     }
 
@@ -77,14 +82,36 @@ public abstract class QuestionActivity extends AppCompatActivity {
         sLastQuestionIndex = sQuestionIndex;
         sQuestionIndex++;
         Intent intent = new Intent(this, getNextActivityClass());
-        intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intent);
+    }
+    public static void resetQuestions(){
+        sLastQuestionIndex = 0;
+        sQuestionIndex = 0;
+    }
+
+    public void click(View view){
+        Log.d("click","run");
+        RadioButton radioButton = (RadioButton)view;
+        UserAnswer userAnswer = MyApp.getUserAnswers();
+        switch (radioButton.getId()){
+            case R.id.radio_a:
+                userAnswer.setAnswers(sQuestionIndex,'A',radioButton.getText());
+
+                break;
+            case R.id.radio_b:
+                userAnswer.setAnswers(sQuestionIndex,'B',radioButton.getText());
+                break;
+            case R.id.radio_c:
+                userAnswer.setAnswers(sQuestionIndex,'C',radioButton.getText());
+                break;
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d(this.toString(),"onPause,index="+sQuestionIndex);
+        Log.d(this.toString(), "onPause,index=" + sQuestionIndex);
     }
 
     @Override
@@ -97,6 +124,7 @@ public abstract class QuestionActivity extends AppCompatActivity {
             overridePendingTransition(R.anim.push_right_in,R.anim.push_left_out);
         }
     }
+
 
     public void  setBackButtonText(CharSequence text){
         m_btn_back.setText(text);

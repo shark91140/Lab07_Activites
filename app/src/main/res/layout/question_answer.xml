@@ -17,16 +17,19 @@
         android:layout_height="wrap_content">
     <RadioButton
         android:id="@+id/radio_a"
+        android:onClick="click"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@android:style/TextAppearance.Medium"/>
     <RadioButton
         android:id="@+id/radio_b"
+        android:onClick="click"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@android:style/TextAppearance.Medium"/>
     <RadioButton
         android:id="@+id/radio_c"
+        android:onClick="click"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@android:style/TextAppearance.Medium"/>

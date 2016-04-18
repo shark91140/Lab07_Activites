@@ -1,4 +1,4 @@
-package com.example.studente3.lab07_activites;
+package com.example.studente3.lab07_activites.Adapter;
 
 /**
  * Created by student on 2016/4/12.

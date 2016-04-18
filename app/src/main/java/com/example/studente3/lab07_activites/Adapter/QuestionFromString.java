@@ -1,6 +1,9 @@
-package com.example.studente3.lab07_activites;
+package com.example.studente3.lab07_activites.Adapter;
 
 import android.content.res.Resources;
+
+import com.example.studente3.lab07_activites.R;
+import com.example.studente3.lab07_activites.model.Question;
 
 import java.util.ArrayList;
 import java.util.List;

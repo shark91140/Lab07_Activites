@@ -1,6 +1,8 @@
-package com.example.studente3.lab07_activites;
+package com.example.studente3.lab07_activites.Adapter;
 
 import android.content.res.Resources;
+
+import com.example.studente3.lab07_activites.MyApp.MyApp;
 
 /**
  * Created by student on 2016/4/12.

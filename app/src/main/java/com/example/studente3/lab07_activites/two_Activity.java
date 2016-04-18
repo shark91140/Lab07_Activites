@@ -1,7 +1,5 @@
 package com.example.studente3.lab07_activites;
 
-import android.view.View;
-
 public class two_Activity extends QuestionActivity {
 
     @Override
