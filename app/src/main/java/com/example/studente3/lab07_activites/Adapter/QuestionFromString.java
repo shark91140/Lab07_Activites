@@ -37,7 +37,7 @@ public class QuestionFromString implements QuestionAdapter {
     @Override
     public CharSequence getQuestion(int index) {
         Question question = list.get(index);
-        String text = question.getQuestion();
+        String text = question.getDescription();
         return text;
     }
 

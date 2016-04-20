@@ -68,7 +68,7 @@ public class QuestionFromXml implements QuestionAdapter{
 
     @Override
     public CharSequence getQuestion(int index) {
-        return list.get(index).getQuestion();
+        return list.get(index).getDescription();
     }
 
     @Override

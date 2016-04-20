@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IntDef;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +16,8 @@ import com.example.studente3.lab07_activites.Adapter.QuestionAdapterFactory;
 import com.example.studente3.lab07_activites.MyApp.MyApp;
 import com.example.studente3.lab07_activites.model.UserAnswer;
 
-public abstract class QuestionActivity extends AppCompatActivity {
+public abstract class QuestionActivity extends AppCompatActivity
+        implements QuestionAdapterFactory.Receiver{
 
     private TextView m_tv_message;
     private TextView m_tv_name;
@@ -59,14 +61,22 @@ public abstract class QuestionActivity extends AppCompatActivity {
 
 
         String no = String.valueOf(sQuestionIndex+1);
-        if (sAdapter == null){
-            sAdapter = QuestionAdapterFactory.getQuestionAdapter();
-        }
-        m_radio_a.setText(sAdapter.getQuestionOptionA(sQuestionIndex));
-        m_radio_b.setText(sAdapter.getQuestionOptionB(sQuestionIndex));
-        m_radio_c.setText(sAdapter.getQuestionOptionC(sQuestionIndex));
         m_tv_name.setText(no);
-        m_tv_message.setText(sAdapter.getQuestion(sQuestionIndex).toString());
+        if (sAdapter == null){
+            QuestionAdapterFactory.getQuestionAdapter(this);
+        }
+    }
+    public void receiveQuestionAdapter(QuestionAdapter adapter){
+       sAdapter = adapter;
+        updateQuestionText();
+   }
+
+    private void updateQuestionText() {
+        m_radio_a.setText(Html.fromHtml(sAdapter.getQuestionOptionA(sQuestionIndex).toString()));
+        m_radio_b.setText(Html.fromHtml(sAdapter.getQuestionOptionB(sQuestionIndex).toString()));
+        m_radio_c.setText(Html.fromHtml(sAdapter.getQuestionOptionC(sQuestionIndex).toString()));
+
+        m_tv_message.setText(Html.fromHtml(sAdapter.getQuestion(sQuestionIndex).toString()));
     }
 
     public void Back(View view) {

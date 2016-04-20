@@ -22,5 +22,6 @@
         <activity android:name=".three_Activity" />
         <activity android:name=".edit_Text_Activity" />
     </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
 </manifest>
