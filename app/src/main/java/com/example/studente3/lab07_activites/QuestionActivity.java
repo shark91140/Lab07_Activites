@@ -3,6 +3,7 @@ package com.example.studente3.lab07_activites;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IntDef;
+import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
@@ -29,6 +30,7 @@ public abstract class QuestionActivity extends AppCompatActivity
     private static int sQuestionIndex = 0;
     private static int sLastQuestionIndex;
     private static QuestionAdapter sAdapter;
+    private ContentLoadingProgressBar m_pgb_loading;
 
 
     @Override
@@ -40,8 +42,13 @@ public abstract class QuestionActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
+        initContentLoadingProgressBar();
         initQuestions();
         initBackNextButton();
+    }
+
+    private void initContentLoadingProgressBar() {
+        m_pgb_loading = (ContentLoadingProgressBar)findViewById(R.id.pgb_loading);
     }
 
     @SuppressWarnings("ResourceType")
@@ -65,13 +72,19 @@ public abstract class QuestionActivity extends AppCompatActivity
         if (sAdapter == null){
             QuestionAdapterFactory.getQuestionAdapter(this);
         }
+        updateQuestionText();
     }
     public void receiveQuestionAdapter(QuestionAdapter adapter){
+        Log.d("adapter","ok");
        sAdapter = adapter;
+        findViewById(R.id.pgb_loading).setVisibility(View.GONE);
         updateQuestionText();
+
    }
 
     private void updateQuestionText() {
+        if (sAdapter == null){return;}
+        m_pgb_loading.setVisibility(View.GONE);
         m_radio_a.setText(Html.fromHtml(sAdapter.getQuestionOptionA(sQuestionIndex).toString()));
         m_radio_b.setText(Html.fromHtml(sAdapter.getQuestionOptionB(sQuestionIndex).toString()));
         m_radio_c.setText(Html.fromHtml(sAdapter.getQuestionOptionC(sQuestionIndex).toString()));

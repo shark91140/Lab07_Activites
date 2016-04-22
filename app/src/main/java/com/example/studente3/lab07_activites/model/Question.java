@@ -17,6 +17,9 @@ public class Question {
     @Element
     private String optionC;
 
+    public Question() {
+    }
+
     public Question(String description, String optionA, String optionB, String optionC) {
         this.description = description;
         this.optionA = optionA;

@@ -51,6 +51,7 @@ public class QuestionAdapterFactory {
                     QuestionList q1 = response.body();
                     List<Question> list = q1.getList();
                     adapter = new QuestionFromGoogleDriveXml(list);
+                    receiver.receiveQuestionAdapter(adapter);
                 }else{
                     Log.d("Retrofit","onResponse fail");
                 }
